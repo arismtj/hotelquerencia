@@ -1,0 +1,56 @@
+---
+import MenuItemView from "../components/MenuItemView.astro";
+import menuItems from "../data/menuItemsData";
+import Nav from "../components/Navbar/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+import Nav2 from "../components/Navbar/Nav2.astro";
+
+//FUENTES
+
+//FUENTES
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>La Querencia Hotel| </title>
+	<meta name="description" content="Disfruta de un Estancia Única en Nuestro Hotel Frente al Mar en Asia"/>
+
+  </head>
+  <body>
+    <div class="principal">
+      <header>
+        <Nav2>
+          {menuItems.map((item) => <MenuItemView {...item} />)}
+        </Nav2>
+      </header>
+      <main>
+        <slot />
+      </main>
+
+      <footer>
+        <Footer />
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  .principal {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+</style>

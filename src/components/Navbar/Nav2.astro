@@ -1,0 +1,156 @@
+---
+
+---
+
+<header class="">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <div class="head fixed top-0 left-0 w-[100%] flex justify-between items-center z-[100]">
+    <div class="logo">
+      <a href="/">
+        <img src="/querenciahotellogo.png" class=" w-36" />
+      </a>
+    </div>
+
+    <input type="checkbox" id="check">
+    <label for="check" class="icons">
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <i class='bx bx-x'  id="close-icon"></i>
+
+    </label>
+
+    <nav class="navbar ">
+      <ul class=" flex space-x-12 mx-auto justify-center items-center">
+        <slot />
+      </ul>
+    </nav>
+  </div>
+
+  <!--scripts -->
+  
+</header>
+
+<style>
+  header {
+    background: url(/playa1.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 1.3rem 10%;
+    
+    height: 60vh;
+  }
+
+  .head {
+    
+    padding: 1.3rem 10%;
+   
+  }
+
+  .head::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background:rgba(0,0,0,.1);
+    backdrop-filter: blur(50px);
+    z-index: -1;
+
+  }
+
+  .head::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
+    transition: .5s;
+  }
+
+  .head:hover::after{
+    left: 100%;
+  }
+
+  .navbar ul{
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    text-shadow: 2px 2px 1px black;
+    margin-left: 2.5rem;
+  }
+
+  #check{
+    display: none;
+  }
+
+  .icons{
+    position: absolute;
+    right: 0;
+
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+  }
+
+  /* BREAKPOINTS*/
+
+  @media (max-width:992px){
+    .head{
+        padding: 1.3rem 10%;
+    }
+  }
+
+  @media(max-width:758px){
+    .icons{
+        display: block;
+       right: 10%;
+    }
+
+    .logo {
+        left: 20%;
+    }
+
+    #check:checked~.icons #menu-icon{
+        display: none;
+    }
+
+    .icons #close-icon{
+        display: none;
+    }
+
+    #check:checked~.icons #close-icon{
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: rgba(0,0,0, .1);
+        backdrop-filter: blur(50px);
+        box-shadow: 0 .5rem 1rem rgba(0,0,0, .1);
+        overflow: hidden;
+        transition: .3s ease;
+    }
+
+    #check:checked~.navbar{
+        height: 17.7rem;
+    }
+
+    .navbar ul{
+        display: block;
+        font-size: 1.5rem;
+        
+        text-align: center;
+
+        
+    }
+  }
+</style>
