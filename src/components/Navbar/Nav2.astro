@@ -1,56 +1,61 @@
 ---
-
 ---
 
-<header class="">
+<div class="body border-4 border-yellow-400">
 
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-  <div class="head fixed top-0 left-0 w-[100%] flex justify-between items-center z-[100]">
-    <div class="logo w-36">
-      <a href="/">
-        <img src="/querenciahotellogo.png"  />
-      </a>
-    </div>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  
+  <div class="header border-4 border-orange-600">
+    <!--logo -->
+    <a>
+      <img src="/querenciahotellogo.png" class="logo w-36"/>
+    </a>
 
     <input type="checkbox" id="check">
     <label for="check" class="icons">
-        <i class='bx bx-menu' id="menu-icon"></i>
-        <i class='bx bx-x'  id="close-icon"></i>
-
+      <i class='bx bx-menu' id="menu-icon"></i>
+      <i class='bx bx-x'  id="close-icon"></i>
     </label>
-
-    <nav class="navbar ">
-      <ul class=" flex space-x-12 mx-auto justify-center items-center">
-        <slot />
-      </ul>
+  
+    <!--nav -->
+    <nav class="navbar">
+      <a href="/" style="--i:0;">Home</a>
+      <a href="/habitaciones" style="--i:1;">Habitaciones</a>
+      <a href="/galeria" style="--i:2;">Galeria</a>
+      <a href="/contacto" style="--i:3;">Contacto</a>
     </nav>
   </div>
-
-  <!--scripts -->
-  
-</header>
+ 
+</div>
 
 <style>
-  header {
-    background: url(/playa1.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding: 1.3rem 20%;
-    
-    height: 50vh;
-  }
 
-  .head {    
-    padding: 1.3rem 10%;
-   
-  }
+.body{
+  height: 100%;
+  min-height: 61vh;
+  background: url(/playa1.jpg)no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
-  .head::before{
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.3rem 10%;
+  display: flex;
+  justify-content: space-between ;
+  align-items: center;
+  z-index: 100;
+
+}
+
+.header::before{
     content: '';
     position: absolute;
     width: 100%;
-    height: 90%;
+    height: 100%;
     top: 0;
     left: 0;
     background:rgba(0,0,0,.1);
@@ -59,61 +64,51 @@
 
   }
 
-  .head::after{
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 90%;
-    top: 0;
-    left: -100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
-    transition: .5s;
-  }
+.logo{
+  font-weight: 700;
+}
 
-  .head:hover::after{
-    left: 100%;
-  }
+.navbar a{
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 2.5rem;
+}
 
-  .navbar ul{
-    font-size: 1.5rem;
-    text-decoration: none;
-    font-weight: 500;
-    text-shadow: 2px 2px 1px black;
-    margin-left: 2.5rem;
-  }
-
-  #check{
+#check{
     display: none;
   }
 
-  .icons{
-    position: absolute;
-    right: 0;
 
-    font-size: 2.8rem;
-    color: #fff;
-    cursor: pointer;
-    display: none;
-  }
+.icons{
+  position: absolute;
+  right: 10%;
+  font-size: 2.8rem ;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
 
   /* BREAKPOINTS*/
 
-  @media (max-width:992px){
-  
-    
+  @media (max-width:992px) {
+    .header {
+      padding: 1.3rem 5%;
+    }
   }
 
-  @media(max-width:758px){
+  @media (max-width:768px){
+
+   body{
+      width: 100%;
+    }
+
     .icons{
-        display: block;
-       right: 10%;
+      display: inline-flex;
     }
 
-    .logo {
-        left: 20%;
-        font-size: 150px;
-    }
-
+    
     #check:checked~.icons #menu-icon{
         display: none;
     }
@@ -127,29 +122,39 @@
     }
 
     .navbar {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        height: 0;
-        background: rgba(0,0,0, .1);
-        backdrop-filter: blur(50px);
-        box-shadow: 0 .5rem 1rem rgba(0,0,0, .1);
-        overflow: hidden;
-        transition: .3s ease;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%; 
+      height: 0; 
+      background: rgba(0,0,0, .1);
+      backdrop-filter: blur(50px);
+      box-shadow: 0 .5rem 1rem rgba(0,0,0, .1);
+      overflow: hidden;
+      transition: .3s ease;
+      
+        
     }
 
     #check:checked~.navbar{
-        height: 17.7rem;
+        height: 22.8rem;
+        
     }
 
-    .navbar ul{
-        display: block;
-        font-size: 1.5rem;
-        
-        text-align: center;
+    .navbar a{
+      display: block;
+      font-size: 1.6rem;
+      margin: 2.1rem 0;
+      text-align: center;
+      transform: translateY(-10px);
+  
+      transition: .3s ease;
+    }
 
-        
+    #check:checked~.navbar{
+      transform: translateY(0px);
+      opacity: 1;
+      transition-delay: calc(.15s * var(--i));
     }
   }
 </style>
