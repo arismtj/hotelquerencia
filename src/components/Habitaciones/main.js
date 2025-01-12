@@ -4,6 +4,7 @@ var swiper = new Swiper(".myswiper",{
     spaceBetween: 50,
     grabCursor: true,    
     loop: true,
+    
 
     breakpoints:{
         0: {
