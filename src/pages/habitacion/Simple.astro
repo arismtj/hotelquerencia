@@ -6,6 +6,46 @@ import Layout from "../../layouts/Layout.astro";
 <Layout title="simple">
   <section>
     
+    <!--empieza slider -->
+    <div class="slider relative w-[100%] min-h-[80vh] flex justify-center items-center bg-[#161616]">
+
+      <input type="radio" name="slider">
+      <div class="imgBox">
+        <img src="/simple/simple.jpg"/>
+        <div class="contenido">
+          <h2 class="titulo">CUARTO SIMPLE</h2>
+
+        </div>
+      </div>
+
+      <input type="radio" name="slider">
+      <div class="imgBox">
+        <img src="/simple/simple1.jpg"/>
+        <div class="contenido">
+          <h2>CUARTO SIMPLE</h2>
+
+        </div>
+      </div>
+
+      <input type="radio" name="slider">
+      <div class="imgBox">
+        <img src="/simple/simple2.jpg"/>
+        <div class="contenido">
+          <h2>CUARTO SIMPLE</h2>
+
+        </div>
+      </div>
+
+      <input type="radio" name="slider">
+      <div class="imgBox">
+        <img src="/simple/simple3.jpg"/>
+        <div class="contenido">
+          <h2>CUARTO SIMPLE</h2>
+
+        </div>
+      </div>
+
+    </div>
 
     <!--room amenities -->
 
@@ -55,12 +95,107 @@ import Layout from "../../layouts/Layout.astro";
         </div>
       </div>
     </div>
-
     
   </section>
 </Layout>
 
 <style>
+
+  .slider .imgBox{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    transition-delay: 0s;
+    z-index: 1;
+    clip-path: circle(0 at bottom);
+  }
+
+  .slider input[type="radio"]:checked + .imgBox{
+    z-index: 10;
+    clip-path: circle(1200px at bottom);
+    transition-delay: 1s;
+  }
+
+  .slider .imgBox img{
+    position: absolute;
+    top: 0;
+    left: 0 ;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(75%);
+  }
+
+  .slider .imgBox .contenido{
+    position: relative;
+    text-align: center;
+    max-width: 800px;
+    box-sizing: border-box;
+    color: #fff;
+   
+  }
+
+  .slider .imgBox .contenido h2{
+    font-size: 4em;
+    line-height: 1em;
+    text-shadow: 2px 2px 1px black;   
+  }
+
+  .slider input[type="radio"]{
+    position: relative;
+    z-index: 1000;
+    margin: 5px;
+    margin-bottom: -400px;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid #945bc4;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+  }
+
+  .slider input[type="radio"]::before{
+    content: '';
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #945bc4;
+  }
+
+  .slider input[type="radio"]:checked::before{
+    transform: scale(2);
+  }
+
+/**responsive */
+
+@media only screen and (max-width: 768px){
+  .slider .imgBox .contenido{
+
+    width: 100%;
+ 
+   
+  }
+
+  .slider .imgBox{
+    width: 100%;
+  }
+
+}
+
 
   /* amenidades */
 
