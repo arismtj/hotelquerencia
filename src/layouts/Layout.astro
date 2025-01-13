@@ -3,8 +3,9 @@ import MenuItemView from "../components/MenuItemView.astro";
 import menuItems from "../data/menuItemsData";
 import Nav from "../components/Navbar/Nav.astro";
 import Footer from "../components/Footer.astro";
-
 import Nav2 from "../components/Navbar/Nav2.astro";
+
+import Whatsapp from "../components/whatsapp/whatsapp.astro";
 
 //FUENTES
 
@@ -18,7 +19,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -31,24 +32,25 @@ const { title } = Astro.props;
     />
   </head>
   <body>
-    <div class="principal">
+   
       <header>
         <Nav2/>  
       </header>
       <main>
-        <slot />
-      </main>
+      <slot />
+      <Whatsapp />
+      </main>      
 
       <footer>
         <Footer />
+       
       </footer>
-    </div>
+   
   </body>
 </html>
 
 <style>
-  .principal {
-    width: 100%;
+  body {    
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
